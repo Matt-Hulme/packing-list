@@ -52,6 +52,10 @@ export default function Index() {
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
 
+  const { items } = useLoaderData<typeof loader>()
+  const navigation = useNavigation()
+  const isSubmitting = navigation.state === 'submitting'
+
   return (
     <main className="bg-blue-500 min-h-screen">
       <Container className="mx-auto">
