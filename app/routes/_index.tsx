@@ -1,9 +1,16 @@
 import { json } from '@remix-run/node'
 import { Form, useLoaderData, useNavigation } from '@remix-run/react'
 import type { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node'
-import { Button, Input, VStack, HStack, Text, List } from '@chakra-ui/react'
+import {
+  Button,
+  Input,
+  VStack,
+  HStack,
+  Text,
+  List,
+  Container,
+} from '@chakra-ui/react'
 
-// Types
 interface PackingItem {
   id: string
   name: string
@@ -14,6 +21,7 @@ interface PackingItem {
 const items: PackingItem[] = []
 
 // Server-side: Loader function
+// @todo type this when we have data to fetch
 // eslint-disable-next-line
 export async function loader({}: LoaderFunctionArgs) {
   return json({ items })
@@ -44,38 +52,53 @@ export default function Index() {
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
 
+  const { items } = useLoaderData<typeof loader>()
+  const navigation = useNavigation()
+  const isSubmitting = navigation.state === 'submitting'
+
   return (
-    <div className="container mx-auto p-6 max-w-2xl">
-      <VStack spaceY={6} align="stretch">
-        <Text fontSize="2xl" fontWeight="bold">
-          Packing List Builder
-        </Text>
+    <main className="bg-blue-500 min-h-screen">
+      <Container className="mx-auto">
+        <VStack className="w-full" spaceY={6} align="stretch">
+          <Text className="text-white" fontSize="2xl" fontWeight="bold">
+            Packing List Builder
+          </Text>
 
-        <Form method="post">
-          <HStack>
-            <Input name="item" placeholder="Add an item..." required />
-            <Button
-              type="submit"
-              colorScheme="blue"
-              disabled={isSubmitting}
-              _loading={{
-                opacity: 0.8,
-                cursor: 'not-allowed',
-              }}
-            >
-              {isSubmitting ? 'Adding...' : 'Add Item'}
-            </Button>
-          </HStack>
-        </Form>
+          <Form method="post">
+            <HStack className="w-full">
+              <Input
+                name="item"
+                placeholder="Add an item..."
+                required
+                className="bg-white"
+              />
+              <Button
+                type="submit"
+                colorScheme="blue"
+                disabled={isSubmitting}
+                className="bg-white hover:bg-gray-100"
+                _loading={{
+                  opacity: 0.8,
+                  cursor: 'not-allowed',
+                }}
+              >
+                {isSubmitting ? 'Adding...' : 'Add Item'}
+              </Button>
+            </HStack>
+          </Form>
 
-        <List.Root>
-          {items.map((item) => (
-            <List.Item key={item.id} p={3} borderWidth="1px" borderRadius="md">
-              {item.name}
-            </List.Item>
-          ))}
-        </List.Root>
-      </VStack>
-    </div>
+          <List.Root className="space-y-2">
+            {items.map((item) => (
+              <List.Item
+                key={item.id}
+                className="p-3 border rounded-md bg-white"
+              >
+                {item.name}
+              </List.Item>
+            ))}
+          </List.Root>
+        </VStack>
+      </Container>
+    </main>
   )
 }

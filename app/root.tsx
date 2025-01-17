@@ -8,8 +8,13 @@ import {
 } from '@remix-run/react'
 import { ChakraProvider } from './components/chakra-provider'
 import { useInjectStyles } from './emotion/emotion-client'
+import { LinksFunction } from '@remix-run/node'
 
 interface LayoutProps extends React.PropsWithChildren {}
+
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: 'app/tailwind.css' },
+]
 
 export const Layout = withEmotionCache((props: LayoutProps, cache) => {
   const { children } = props
