@@ -13,7 +13,7 @@ import { LinksFunction } from '@remix-run/node'
 interface LayoutProps extends React.PropsWithChildren {}
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: 'app/tailwind.css' },
+  { rel: 'stylesheet', href: '/app/tailwind.css' },
 ]
 
 export const Layout = withEmotionCache((props: LayoutProps, cache) => {
