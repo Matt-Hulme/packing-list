@@ -14,6 +14,7 @@ interface LayoutProps extends React.PropsWithChildren {}
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: '/app/tailwind.css' },
+  { rel: 'icon', href: '/favicon.ICO' },
 ]
 
 export const Layout = withEmotionCache((props: LayoutProps, cache) => {
