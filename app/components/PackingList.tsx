@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { Form, useLoaderData, useNavigation } from '@remix-run/react'
 import { Checkbox } from '~/components/ui/checkbox'
-import { loader } from '~/routes/list.$listId'
+import { loader } from '~/routes/lists.$listId'
 
 interface PackingListProps {
   listName: string
@@ -21,7 +21,7 @@ export const PackingList = ({ listName }: PackingListProps) => {
   const isSubmitting = navigation.state === 'submitting'
 
   return (
-    <Container maxW="container.md" py={8}>
+    <Container maxW="container.md" className="bg-greyDark" py={8}>
       <VStack spaceY={6} align="stretch">
         <Text fontSize="2xl" fontWeight="bold">
           {listName}
