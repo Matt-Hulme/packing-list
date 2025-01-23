@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
 export default {
   content: [
@@ -7,19 +7,26 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        green: '#C4DB09',
+        black: '#1F1F20',
+        greyDark: '#6F727C',
+        greyLight: '#C9C9C9',
+        white: 'FFFFFF',
+      },
       fontFamily: {
         sans: [
-          "Inter",
-          "ui-sans-serif",
-          "system-ui",
-          "sans-serif",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol",
-          "Noto Color Emoji",
+          'Inter',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif',
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol',
+          'Noto Color Emoji',
         ],
       },
     },
   },
   plugins: [],
-} satisfies Config;
+} satisfies Config

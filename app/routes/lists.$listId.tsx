@@ -105,12 +105,8 @@ export async function action({
   }
 }
 
-export default function ListRoute() {
+export default function ListsRoute() {
   const { listName } = useLoaderData<typeof loader>()
 
-  return (
-    <main className="min-h-screen bg-gray-50">
-      <PackingList listName={listName} />
-    </main>
-  )
+  return <PackingList listName={listName} />
 }
